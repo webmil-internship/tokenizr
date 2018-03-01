@@ -1,46 +1,47 @@
 class Parser
-  def initialize(string)
-    @str = string
-    @keys = []
-  end
+  class Amazon
+    SEARCH_WORD = 'secretAccessKey'.freeze
 
-  def result
-    parse
-    @keys
-  end
-
-  private
-
-  def parse
-    if @str.kind_of?(Array)
-      parse_array
-    elsif @str.kind_of?(String)
-      parse_string
-    else
-      raise TypeError
+    def self.word
+      SEARCH_WORD
     end
   end
 
-  def parse_string(string=nil)
-    value = {}
-    string_for_parse = string || @str
-    value[:access_key_id] = key(string_for_parse, /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/)
-    value[:access_secret_key] = key(string_for_parse,
-                                /(?<![A-Za-z0-9\/+=])[A-Za-z0-9\/+=]{40}(?![A-Za-z0-9\/+=])/)
-    array_shaping(value)
-  end
+  class Github
+    KEY_ID = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
+    SECRET_KEY = %r{(?<![A-Za-z0-9\/+=])[A-Za-z0-9\/+=]{40}(?![A-Za-z0-9\/+=])}
+    def initialize(string)
+      @str = [*string]
+      @keys = []
+    end
 
-  def parse_array
-    @str.each { |str| parse_string(str) }
-  end
+    def result
+      parse
+      @keys
+    end
 
-  def key(str, format)
-    str.scan(format).first
-  end
+    private
 
-  def array_shaping(value)
-    unless value[:access_key_id].nil? || value[:access_secret_key].nil?
-      @keys << value
+    def parse
+      raise TypeError if @str.any? { |s| !s.is_a?(String) }
+
+      @str.each { |str| parse_string(str) }
+    end
+
+    def parse_string(string)
+      value = {}
+      value[:access_key_id] = key(string, KEY_ID)
+      value[:access_secret_key] = key(string, SECRET_KEY)
+      array_shaping(value)
+    end
+
+    def array_shaping(value)
+      @keys << value unless value[:access_key_id].nil? ||
+                            value[:access_secret_key].nil?
+    end
+
+    def key(str, format = nil)
+      str.scan(format).first
     end
   end
 end
