@@ -16,9 +16,12 @@ class Validator
   end
 
   def validate
+    array = []
     @input_data.each do |hash|
-      valid_data(hash[:access_key], hash[:secret_key])
+      hash_data = valid_data(hash[:access_key], hash[:secret_key])
+      array << hash_data if hash_data != false
     end
+    array
   end
 
   def valid_data(access_key, secret_key)
@@ -28,14 +31,10 @@ class Validator
       secret_access_key: secret_key
     )
     ec2.describe_regions
-    validation_result = {service: @service, access_key_id: access_key, secret_access_key: secret_key}
-    array = []
-    array << validation_result unless hash.nil?
-   rescue
+    { service: service,
+      access_key_id: access_key,
+      secret_access_key: secret_key }
+    rescue
     false
-  end
-
-  def amazon
-    
   end
 end

@@ -15,7 +15,7 @@ class ValidatorTest < MiniTest::Test
       { access_key: CONFIG['wrong_aws_access_key_id'],
         secret_key: CONFIG['wrong_aws_secret_access_key'] },
       { access_key: CONFIG['second_aws_access_key_id'],
-        secret_key: CONFIG['second_aws_secret_access_key'] }  
+        secret_key: CONFIG['second_aws_secret_access_key'] }
     ]
   end
 
@@ -34,7 +34,7 @@ class ValidatorTest < MiniTest::Test
                     { service: @service, access_key_id: second_access_key,
                    secret_access_key: second_secret_key }
                   ],
-                 @validator.validate
+                 @validator.validate)
   end
 
   def test_it_returns_false_with_wrong_keys
