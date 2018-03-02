@@ -28,17 +28,18 @@ class ValidatorTest < MiniTest::Test
     secret_key = CONFIG['aws_secret_access_key']
     second_access_key = CONFIG['second_aws_access_key_id']
     second_secret_key = CONFIG['second_aws_secret_access_key']
-    assert_equal({ service: @service, access_key_id: access_key,
-                   secret_access_key: secret_key },
-                 @validator.amazon(access_key, secret_key))
-    assert_equal({ service: @service, access_key_id: second_access_key,
-                   secret_access_key: second_secret_key },
-                 @validator.amazon(second_access_key, second_secret_key))
+    assert_equal([
+                    { service: @service, access_key_id: access_key,
+                      secret_access_key: secret_key },
+                    { service: @service, access_key_id: second_access_key,
+                   secret_access_key: second_secret_key }
+                  ],
+                 @validator.validate
   end
 
   def test_it_returns_false_with_wrong_keys
     access_key = CONFIG['wrong_aws_access_key_id']
     secret_key = CONFIG['wrong_aws_secret_access_key']
-    assert_equal(false, @validator.amazon(access_key, secret_key))
+    assert_equal(false, @validator.valid_data(access_key, secret_key))
   end
 end
