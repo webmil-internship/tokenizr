@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '../../classes/parser'
+require_relative '../../classes/parser/parser'
 
 class ParserTest < Minitest::Test
   EXAMPLE_ARRAY =
