@@ -17,7 +17,6 @@ class Provider
     client = Octokit::Client.new access_token: @token
     res = client.search_code(@key, page: 1, per_page: 10,
                              headers: { "Accept" => "application/vnd.github.v3.text-match+json" })
-    ap total_count = res.total_count
-    ap @result = res.items.map{|item| item.text_matches.map(&:fragment) }.flatten
+    @result = res.items.map{|item| item.text_matches.map(&:fragment) }.flatten
   end
 end
