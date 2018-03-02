@@ -1,18 +1,16 @@
 class Parser
   class Amazon
     SEARCH_WORD = 'secretAccessKey'.freeze
-
-    def self.word
-      SEARCH_WORD
-    end
-  end
-
-  class Github
     KEY_ID = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
     SECRET_KEY = %r{(?<![A-Za-z0-9\/+=])[A-Za-z0-9\/+=]{40}(?![A-Za-z0-9\/+=])}
+
     def initialize(string)
       @str = [*string]
       @keys = []
+    end
+
+    def self.word
+      SEARCH_WORD
     end
 
     def result
