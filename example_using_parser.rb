@@ -1,4 +1,4 @@
-require_relative 'classes/parser'
+require_relative 'classes/parser/parser'
 
 STRING = ['{ secretAccessKey= SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT '\
           'secrettId: AKIAJB5GNEGKOUGXZ3KQ }',
