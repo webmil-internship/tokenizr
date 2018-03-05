@@ -1,6 +1,6 @@
 require 'yaml'
 require_relative '../test_helper'
-require './classes/validator'
+require './classes/validator/validator'
 require 'aws-sdk-ec2'
 # top_level_class_documentation comment :)
 class ValidatorTest < MiniTest::Test
