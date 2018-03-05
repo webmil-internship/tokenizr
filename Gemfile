@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'json'
-gem 'minitest-reporters'
 gem 'octokit', '~> 4.0'
 gem 'rerun'
 gem 'sequel'
