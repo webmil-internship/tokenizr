@@ -10,8 +10,12 @@ class Validator
   end
 
   def validate
-    validate_amazon if service == 'amazon'
+    if service == 'amazon'
+      validate_amazon
+    else
+      'Unsupported service given'
     # TODO: Add methods for other validations
+    end
   end
 
   private

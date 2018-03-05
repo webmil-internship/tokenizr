@@ -23,6 +23,14 @@ class ValidatorTest < MiniTest::Test
     assert_kind_of Validator, @validator
   end
 
+  def test_it_receives_wrong_service
+    wrong_validator = Validator.new(@input_data, 'heroku')
+    assert_equal(
+      'Unsupported service given',
+      wrong_validator.validate
+    )
+  end
+
   def test_it_returns_hash_with_correct_keys
     access_key = CONFIG['aws_access_key_id']
     secret_key = CONFIG['aws_secret_access_key']
