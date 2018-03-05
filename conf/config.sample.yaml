@@ -1,6 +1,0 @@
-service: 'github'
-aws_region: 'us-west-2'
-aws_access_key_id: 'CHANGEMETOREAL'
-wrong_aws_access_key_id: '3CNBFAAKGA577DSWQ'
-aws_secret_access_key: 'CHANGEMETOREAL'
-wrong_aws_secret_access_key: 'WKGkN06vN/eh5/Cdx0rDrUpL54eVmW1zbHRp/Oec'

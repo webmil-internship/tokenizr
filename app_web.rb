@@ -5,6 +5,7 @@ require 'sinatra'
 require './boot'
 
 set :bind, IP
+set :port, PORT
 
 get '/' do
   @passkeys = Passkey.reverse_order(:id).all
