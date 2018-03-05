@@ -7,7 +7,3 @@ gem 'sequel'
 gem 'sinatra'
 gem 'sqlite3'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-gem 'dotenv'
-gem 'octokit'
-gem 'awesome_print'
-
