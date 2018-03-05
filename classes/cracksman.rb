@@ -10,12 +10,16 @@ class CracksMan
   end
 
   def handling
-    result = search_result
-    fragments = extract_fragments(result)
-    dirty_phrases = extract_phrases(fragments)
-    parsed_phrases = parse_phrases(dirty_phrases)
-    valid_phrases = check_valid_phrases(phrases)
-    save_valid_phrases(valid_phrases)
+    puts '<================ start searching ================>'
+    search_result = Provider.new(@key_phrase).results
+    puts '<================ search result ================>'
+    puts search_result
+    puts '<================ start parsing ================>'
+    parsed_phrases = Parser::Amazon.new(search_result).result
+    puts '<================ parse result ================>'
+    puts parsed_phrases
+#    valid_phrases = check_valid_phrases(phrases)
+#    save_valid_phrases(valid_phrases)
   end
 
   private

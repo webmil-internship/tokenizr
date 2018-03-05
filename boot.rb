@@ -1,7 +1,9 @@
-require 'net/http'
+require 'awesome_print'
+require 'dotenv/load'
+# require 'net/http'
 require 'octokit'
 require 'sequel'
-require 'uri'
+# require 'uri'
 require 'yaml'
 
 CONFIG = YAML.load_file('config.yml')
