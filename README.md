@@ -1,9 +1,12 @@
-Readme for tokenizr:
-qwerty
 
-PARSER:
+1. git clone https://github.com/webmil-internship/tokenizr.git
 
-1. require file classes/parser/parser.rb to your class
-2. use Parser::Amazon.word - for get the searching word
-3. use Parser::Amazon.new(<string or array with string>).result - for get keys, who have found 
-=======
+2. bundle install
+
+3. unzip config.yml.zip
+
+4. unzip db/sbs.db.zip (existing DB) OR rake db:migrate (empty DB)
+
+5. ruby app_con.rb (console version) OR rerun app_web.rb (web version)
+
+5a. For web version edit config.yml and set valid ip_address (e.g. ip_address: '192.168.1.63')
