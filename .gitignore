@@ -1,3 +1,4 @@
+
 # Ignore all draftfiles and tempfiles.
 /draft/*
 /tmp/*
@@ -9,3 +10,7 @@
 /db/*.db
 
 /Gemfile.lock
+
+.env
+.idea/*
+
