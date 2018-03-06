@@ -1,5 +1,6 @@
-class TelegramParser < Parser
-  SEARCH_WORD = 'telegram'.freeze
+require_relative 'base_parser'  
+
+class TelegramParser < BaseParser
   TOKEN = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
 
   def parse_string(string)

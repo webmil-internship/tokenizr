@@ -1,10 +1,8 @@
-class Parser
+class BaseParser
+
   def initialize(string)
     @str = [*string]
     @keys = []
-  end
-
-  def self.word
   end
 
   def result
@@ -19,11 +17,11 @@ class Parser
   end
 
   def parse_string(string)
-    raise "Not implemented"
+    raise 'Not implemented'
   end
 
   def array_shaping(value)
-    raise "Not implemented"
+    raise 'Not implemented'
   end
 
   def key(str, format = nil)

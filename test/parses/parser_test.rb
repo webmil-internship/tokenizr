@@ -1,45 +1,47 @@
 require 'minitest/autorun'
-require_relative '../../classes/parser/parser'
+require_relative '../../classes/parser/base_parser'
 
 class ParserTest < Minitest::Test
-  EXAMPLE_ARRAY =
-    ['{ secretAccessKey= SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT '\
-     'secrettId: AKIAJB5GNEGKOUGXZ3KQ }',
-     'тут нічого немає',
-     'і тут нічого немає',
-     'а тут ще один ключ SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT',
-     '{ secretAccessKey= jIWoG3hN7DcEpREpiH51y7DdVNu8N8Ge2XNxfB5r '\
-     'secrettId: AKIAIOSFODNN7EXAMPLE }'].freeze
-  EXAMPLE_STRING = '{secretAccessKey SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT '\
-                   'secrettId: AKIAJB5GNEGKOUGXZ3KQ }'.freeze
-  RESULT_FROM_STRING = [{ access_key_id: 'AKIAJB5GNEGKOUGXZ3KQ',
-                          access_secret_key: 'SmwCRSb6fNwu92GmsdZPPwcdA/6'\
-                                             'D0vl3hl6xerFT' }].freeze
-  RESULT_FROM_ARRAY = [{ access_key_id: 'AKIAJB5GNEGKOUGXZ3KQ',
-                         access_secret_key: 'SmwCRSb6fNwu92GmsdZPPwcdA/6'\
-                                            'D0vl3hl6xerFT' },
-                       { access_key_id: 'AKIAIOSFODNN7EXAMPLE',
-                         access_secret_key: 'jIWoG3hN7DcEpREpiH51y7D'\
-                                            'dVNu8N8Ge2XNxfB5r' }].freeze
+  EXAMPLE_STRING = 'secrettId: AKIAJB5GNEGKOUGXZ3KQ '.freeze
+  STRING_RESULT = 'AKIAJB5GNEGKOUGXZ3KQ'.freeze
+  KEY_ID = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
 
-  def test_array
-    array_for_parse = EXAMPLE_ARRAY
-    parser = Parser::Amazon.new(array_for_parse)
-    actual_result = RESULT_FROM_ARRAY
-    assert_equal actual_result, parser.result
+  def test_result
+    parser = BaseParser.new('String')
+    assert_raises('Not implemented') { parser.result }
   end
 
-  def test_string
-    parser = Parser::Amazon.new(EXAMPLE_STRING).result
-    assert_equal RESULT_FROM_STRING, parser
+  def test_parse
+    parser = BaseParser.new('String')
+    assert_raises('Not implemented') { parser.parse }
+  end
+
+  def test_parse_string
+    parser = BaseParser.new('String')
+    assert_raises('Not implemented') { parser.parse_string('String') }
+  end
+
+  def test_array_shaping
+    parser = BaseParser.new('String')
+    assert_raises('Not implemented') { parser.array_shaping('String') }
+  end
+
+  def test_key
+    parser = BaseParser.new('String')
+    assert_equal STRING_RESULT, parser.key(EXAMPLE_STRING, KEY_ID)
+  end
+
+  def test_wrong_param_key
+    parser = BaseParser.new('String')
+    assert_raises(ArgumentError) { parser.key }
   end
 
   def test_wrong_type_param_exception
-    parser = Parser::Amazon.new(1)
+    parser = BaseParser.new(1)
     assert_raises(TypeError) { parser.result }
   end
 
   def test_wrong_param_exception
-    assert_raises(ArgumentError) { Parser::Amazon.new('string1', 'string2') }
+    assert_raises(ArgumentError) { BaseParser.new('string1', 'string2') }
   end
 end
