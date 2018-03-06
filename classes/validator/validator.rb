@@ -1,20 +1,19 @@
 # Just a top_level_class_documentation comment :)
 class Validator
-  attr_accessor :access_key, :secret_key, :region, :service, :output
-  CONFIG = YAML.load_file('./conf/config.yml') unless defined? CONFIG
-  def initialize(input_data, service)
+  attr_accessor :access_key, :secret_key, :region, :target, :output, :input_data
+  def initialize(input_data, target)
     @input_data = input_data
-    @service = service
-    @region = CONFIG['aws_region']
+    @target = target
+    @region = 'us-west-2'
     @output = []
   end
 
   def validate
-    if service == 'amazon'
+    if target == 'amazon'
       validate_amazon
     else
-      'Unsupported service given'
-    # TODO: Add methods for other validations
+      'Unsupported target given'
+      # TODO: Add methods for other validations
     end
   end
 
@@ -26,6 +25,8 @@ class Validator
       output << hash_data if hash_data != false
     end
     output
+  rescue TypeError
+    'Array must contain hash with Access Key ID and Secret access key'
   end
 
   def valid_amazon_data(access_key, secret_key)
@@ -33,11 +34,9 @@ class Validator
       region: region, access_key_id: access_key, secret_access_key: secret_key
     )
     ec2.describe_regions
-    { service: service,
-      access_key_id: access_key,
+    { access_key_id: access_key,
       secret_access_key: secret_key }
-    rescue # TODO: Investigate what type of error returs Amazon
-      false
-    # TODO: Add resque for Network errors
+  rescue Aws::EC2::Errors::AuthFailure
+    false
   end
 end
