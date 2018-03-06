@@ -1,4 +1,4 @@
-require_relative 'classes/parser/parser'
+require_relative 'classes/parser/amazon_parser'
 
 STRING = ['{ secretAccessKey= SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT '\
           'secrettId: AKIAJB5GNEGKOUGXZ3KQ }',
@@ -7,5 +7,5 @@ STRING = ['{ secretAccessKey= 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 '\
           'а тут ще один ключ SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT',
           '{ secretAccessKey= jIWoG3hN7DcEpREpiH51y7DdVNu8N8Ge2XNxfB5r '\
           'secrettId: AKIAIOSFODNN7EXAMPLE }'].freeze
-parser = Parser::Amazon.new(STRING)
+parser = AmazonParser.new(STRING)
 p parser.result
