@@ -2,6 +2,14 @@ Readme for tokenizr:
 
 PARSER:
 
-1. require file classes/parser/parser.rb to your class
-2. use Parser::Amazon.word - for get the searching word
-3. use Parser::Amazon.new('string or array with string').result - for get keys, who have found 
+USING:
+
+1. require necessary file from classes/parser/ to your class
+2. initialize necessary class with string\array
+3. use method result from class
+
+Inheritance:
+
+1. Create file
+2. Add inheritance with class Parser
+3. Implement methods parse_string(string) and array_shaping(value_from_hash) 
