@@ -9,43 +9,43 @@ class ParserTest < Minitest::Test
   GOOD_HASH = { a: 'some value', b: 'some values'}
 
   def test_result
-    parser = BaseParser.new('String')
-    assert_raises('Not implemented') { parser.result }
+    parser = BaseParser.new
+    assert_raises('Not implemented') { parser.result('String') }
   end
 
   def test_parse
-    parser = BaseParser.new('String')
-    assert_raises('Not implemented') { parser.parse }
+    parser = BaseParser.new
+    assert_raises('Not implemented') { parser.parse('String') }
   end
 
   def test_parse_string
-    parser = BaseParser.new('String')
+    parser = BaseParser.new
     assert_raises('Not implemented') { parser.parse_string('String') }
   end
 
   def test_array_shaping_with_wrong_hash
-    parser = BaseParser.new('String')
+    parser = BaseParser.new
     assert_nil parser.array_shaping(WRONG_HASH)
   end
 
   def test_array_shaping_with_good_hash
-    parser = BaseParser.new('String')
+    parser = BaseParser.new
     assert_equal [GOOD_HASH], parser.array_shaping(GOOD_HASH)
   end
 
   def test_key
-    parser = BaseParser.new('String')
+    parser = BaseParser.new
     assert_equal STRING_RESULT, parser.key(EXAMPLE_STRING, KEY_ID)
   end
 
   def test_wrong_param_key
-    parser = BaseParser.new('String')
+    parser = BaseParser.new
     assert_raises(ArgumentError) { parser.key }
   end
 
   def test_wrong_type_param_exception
-    parser = BaseParser.new(1)
-    assert_raises(TypeError) { parser.result }
+    parser = BaseParser.new
+    assert_raises(TypeError) { parser.result(1) }
   end
 
   def test_wrong_param_exception

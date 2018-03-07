@@ -8,5 +8,5 @@ STRING = ['{ secretAccessKey= SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT '\
           'а тут ще один ключ SmwCRSb6fNwu92GmsdZPPwcdA/6D0vl3hl6xerFT',
           '{ secretAccessKey= jIWoG3hN7DcEpREpiH51y7DdVNu8N8Ge2XNxfB5r '\
           'secrettId: AKIAIOSFODNN7EXAMPLE }'].freeze
-parser = AmazonParser.new(STRING)
-p parser.result
+parser = AmazonParser.new
+p parser.result(STRING)

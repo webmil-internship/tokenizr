@@ -1,18 +1,17 @@
 class BaseParser
 
-  def initialize(string)
-    @str = [*string]
+  def initialize
     @keys = []
   end
 
-  def result
-    parse
+  def result(data)
+    parse([*data])
   end
 
-  def parse
-    raise TypeError if @str.any? { |s| !s.is_a?(String) }
+  def parse(data)
+    raise TypeError if data.any? { |s| !s.is_a?(String) }
 
-    @str.each { |str| parse_string(str) }
+    data.each { |str| parse_string(str) }
     @keys
   end
 

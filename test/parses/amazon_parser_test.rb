@@ -23,14 +23,12 @@ class AmazonParserTest < Minitest::Test
                                             'dVNu8N8Ge2XNxfB5r' }].freeze
 
   def test_array
-    array_for_parse = EXAMPLE_ARRAY
-    parser = AmazonParser.new(array_for_parse)
-    actual_result = RESULT_FROM_ARRAY
-    assert_equal actual_result, parser.result
+    parser = AmazonParser.new
+    assert_equal RESULT_FROM_ARRAY, parser.result(EXAMPLE_ARRAY)
   end
 
   def test_string
-    parser = AmazonParser.new(EXAMPLE_STRING).result
+    parser = AmazonParser.new.result(EXAMPLE_STRING)
     assert_equal RESULT_FROM_STRING, parser
   end
 end
