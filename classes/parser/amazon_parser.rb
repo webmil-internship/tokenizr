@@ -11,9 +11,4 @@ class AmazonParser < BaseParser
     }
     array_shaping(value)
   end
-
-  def array_shaping(value)
-    @keys << value unless value[:access_key_id].nil? ||
-                          value[:access_secret_key].nil?
-  end
 end

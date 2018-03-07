@@ -5,6 +5,8 @@ class ParserTest < Minitest::Test
   EXAMPLE_STRING = 'secrettId: AKIAJB5GNEGKOUGXZ3KQ '.freeze
   STRING_RESULT = 'AKIAJB5GNEGKOUGXZ3KQ'.freeze
   KEY_ID = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
+  WRONG_HASH = { a: nil, b: 'some values'}
+  GOOD_HASH = { a: 'some value', b: 'some values'}
 
   def test_result
     parser = BaseParser.new('String')
@@ -21,9 +23,14 @@ class ParserTest < Minitest::Test
     assert_raises('Not implemented') { parser.parse_string('String') }
   end
 
-  def test_array_shaping
+  def test_array_shaping_with_wrong_hash
     parser = BaseParser.new('String')
-    assert_raises('Not implemented') { parser.array_shaping('String') }
+    assert_nil parser.array_shaping(WRONG_HASH)
+  end
+
+  def test_array_shaping_with_good_hash
+    parser = BaseParser.new('String')
+    assert_equal [GOOD_HASH], parser.array_shaping(GOOD_HASH)
   end
 
   def test_key

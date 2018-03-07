@@ -12,4 +12,4 @@ Inheritance:
 
 1. Create file
 2. Add inheritance with class Parser
-3. Implement methods parse_string(string) and array_shaping(value_from_hash) 
+3. Implement methods parse_string(string)
