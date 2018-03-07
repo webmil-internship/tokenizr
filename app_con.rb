@@ -96,7 +96,7 @@ class SearchKeys
   def show_valid_phrases(result_id)
     puts BEGIN_LIST
     Passkey.find(id: result_id).phrases.each do |row|
-      puts row[:val_phrase]
+      puts "Key: #{row[:phrase_key]}, Value: #{row[:phrase_val]}"
     end
     puts END_LIST
     puts RETURN_TO_MAIN_MENU

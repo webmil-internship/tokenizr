@@ -3,7 +3,8 @@ Sequel.migration do
     create_table(:phrases) do
       primary_key :id
       Integer :passkey_id
-      String :val_phrase
+      String :phrase_key
+      String :phrase_val
     end
   end
 end

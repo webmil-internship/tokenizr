@@ -19,7 +19,9 @@ class CracksMan
     puts '<================ parse result ================>'
     puts parsed_phrases
 #    valid_phrases = check_valid_phrases(phrases)
-#    save_valid_phrases(valid_phrases)
+    valid_phrases = [{ access_key_id: "AKIAJVLII6NENSEBRPHQ", secret_access_key: "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" },
+                     { access_key_id: "QQQQQQQQQQQQQQQQqQQQ", secret_access_key: "inqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" }]
+    save_valid_phrases(valid_phrases)
   end
 
   private
@@ -29,8 +31,6 @@ class CracksMan
                               target: @target,
                               key_phrase: @key_phrase,
                               when: Time.now)
-    valid_phrases.each do |row|
-      @passkey.add_phrase(val_phrase: row)
-    end
+    valid_phrases.each { |pairs| pairs.each { |key, value| @passkey.add_phrase(phrase_key: key, phrase_val: value) } }
   end
 end
