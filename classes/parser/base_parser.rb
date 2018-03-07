@@ -1,5 +1,4 @@
 class BaseParser
-
   def initialize
     @keys = []
   end
@@ -15,12 +14,12 @@ class BaseParser
     @keys
   end
 
-  def parse_string(string)
+  def parse_string(_string)
     raise 'Not implemented'
   end
 
   def array_shaping(key_pair)
-    @keys << key_pair unless key_pair.values.any? { |e| e.nil? }
+    @keys << key_pair unless key_pair.values.any?(&:nil?)
   end
 
   def key(str, format = nil)

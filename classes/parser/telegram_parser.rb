@@ -5,7 +5,7 @@ class TelegramParser < BaseParser
 
   def parse_string(string)
     value = {
-      token: key(string, TOKEN),
+      token: key(string, TOKEN)
     }
     array_shaping(value)
   end

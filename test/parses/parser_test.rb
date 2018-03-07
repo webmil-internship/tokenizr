@@ -5,8 +5,8 @@ class ParserTest < Minitest::Test
   EXAMPLE_STRING = 'secrettId: AKIAJB5GNEGKOUGXZ3KQ '.freeze
   STRING_RESULT = 'AKIAJB5GNEGKOUGXZ3KQ'.freeze
   KEY_ID = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
-  WRONG_HASH = { a: nil, b: 'some values'}
-  GOOD_HASH = { a: 'some value', b: 'some values'}
+  WRONG_HASH = { a: nil, b: 'some values' }.freeze
+  GOOD_HASH = { a: 'some value', b: 'some values' }.freeze
 
   def test_result
     parser = BaseParser.new
