@@ -19,7 +19,7 @@ class CracksMan
     puts '<================ parse result ================>'
     puts parsed_phrases
 #    valid_phrases = check_valid_phrases(phrases)
-    valid_phrases = [{ access_key_id: "AKIAJVLII6NENSEBRPHQ", secret_access_key: "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" },
+    valid_phrases = [{ access_key_id: "AAAAAAAAAAAAAAAAAAAA", secret_access_key: "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" },
                      { access_key_id: "QQQQQQQQQQQQQQQQqQQQ", secret_access_key: "inqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" }]
     save_valid_phrases(valid_phrases)
   end
