@@ -2,8 +2,8 @@ require './boot'
 
 # Console version
 class SearchKeys
-  PROVIDER = %w[None GitHub GitLab BitBucket].freeze
-  TARGET = %w[None Amazon DigitalOcean Microsoft].freeze
+  # PROVIDER = %w[None GitHub GitLab BitBucket].freeze
+  # TARGET = %w[None Amazon DigitalOcean Microsoft].freeze
 
   STARTING_SEARCH = 'Starting search...'.freeze
   INPUT_DATA_ERROR = 'Error. Please check your input data. '.freeze
