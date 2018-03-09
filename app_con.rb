@@ -45,7 +45,6 @@ class SearchKeys
 
   def show_main_menu
     Gem::Platform.local.os.include?('linux') ? system('clear') : system('cls')
-    puts 'Debug version: provider - GitHub, target - Amazon, search result - 100th page, 10 per page'
     puts 'Main menu:'
     puts "1 - Select provider (#{@provider})"
     puts "2 - Select target (#{@target})"

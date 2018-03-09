@@ -13,7 +13,7 @@ PORT = CONFIG['ip_port'].freeze
 PROVIDER = %w[None]
 TARGET = %w[None]
 
-Dir[File.dirname(__FILE__) + '/classes/*.rb'].each { |file| require file }
+Dir[File.dirname(__FILE__) + '/classes/**/*.rb'].each { |file| require file }
 Dir[File.dirname(__FILE__) + '/models/*.rb'].each { |file| require file }
 
 providers = []

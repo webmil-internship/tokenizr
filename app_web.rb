@@ -22,6 +22,8 @@ get '/search' do
 end
 
 post '/search' do
+  puts "Provider - #{params[:provider]}"
+  puts "Target - #{params[:target]}"
   CracksMan.new(params[:provider], params[:target], params[:sstring]).handling
   redirect '/'
 end

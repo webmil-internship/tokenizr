@@ -8,9 +8,9 @@
             <label for="provider">Provider</label>
             <select class="custom-select d-block w-100" name="provider" id="provider" required autofocus>
               <option value="">Choose...</option>
-              <option>GitHub</option>
-              <option>GitLab</option>
-              <option>BitBucket</option>
+              <% PROVIDER.drop(1).each do |provider| %>
+                 <option><%= provider %></option>
+              <% end %>
             </select>
           </div>
         </div>
@@ -22,9 +22,9 @@
             <label for="target">Target</label>
             <select class="custom-select d-block w-100" name="target" id="target" required autofocus>
               <option value="">Choose...</option>
-              <option>Amazon</option>
-              <option>DigitalOcean</option>
-              <option>Microsoft</option>
+              <% TARGET.drop(1).each do |target| %>
+                 <option><%= target %></option>
+              <% end %>
             </select>
           </div>
         </div>

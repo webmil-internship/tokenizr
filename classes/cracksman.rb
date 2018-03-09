@@ -6,22 +6,26 @@ class CracksMan
     @provider = provider
     @target = target
     @key_phrase = key_phrase
-    @client = Octokit::Client.new(access_token: CONFIG['github_token'])
   end
 
   def handling
     puts '<================ start searching ================>'
-    search_result = Provider.new(@key_phrase).results
+    search_result = Object.const_get("#{@provider}Provider").new(@key_phrase).results
     puts '<================ search result ================>'
     puts search_result
     puts '<================ start parsing ================>'
-    parsed_phrases = Parser::Amazon.new(search_result).result
+    # parsed_phrases = Object.const_get("#{@target}Parser").new(search_result).result
     puts '<================ parse result ================>'
-    puts parsed_phrases
-#    valid_phrases = check_valid_phrases(phrases)
+    # puts parsed_phrases
+    puts '<================ start validating ================>'
+    # valid_phrases = Object.const_get("#{@target}Validator").new(parsed_phrases).result
     valid_phrases = [{ access_key_id: "AAAAAAAAAAAAAAAAAAAA", secret_access_key: "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" },
                      { access_key_id: "QQQQQQQQQQQQQQQQqQQQ", secret_access_key: "inqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" }]
+    puts '<================ validate result ================>'
+    puts valid_phrases
+    puts '<================ start saving ================>'
     save_valid_phrases(valid_phrases)
+    puts '<================ finished ================>'
   end
 
   private

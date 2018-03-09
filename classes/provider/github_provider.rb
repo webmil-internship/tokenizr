@@ -1,4 +1,4 @@
-class Provider
+class GithubProvider
   require 'dotenv/load'
   require 'octokit'
   require 'awesome_print'
