@@ -9,7 +9,16 @@ class AmazonValidator < BaseValidator
   end
 
   def output_data
-    @input_data.each do |hash|
+    @input_data.each(&parsed_array)
+    output_hash.uniq
+  rescue TypeError
+    'Array must contain hashes'
+  end
+
+  private
+
+  def parsed_array
+    proc do |hash|
       access_key = hash[:access_key]
       secret_key = hash[:secret_key]
       valid_hash = { access_key_id: access_key,
@@ -17,12 +26,7 @@ class AmazonValidator < BaseValidator
       hash_data = validate_keys(access_key, secret_key)
       output_hash << valid_hash if hash_data != false
     end
-    output_hash.to_set.to_a
-  rescue TypeError
-  'Array must contain hashes'
   end
-
-  private
 
   def validate_keys(access_key, secret_key)
     ec2 = Aws::EC2::Client.new(

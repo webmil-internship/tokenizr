@@ -12,4 +12,8 @@ class BaseValidator
   def result
     output_data != [] ? output_data : 'No valid data'
   end
+
+  def output_data
+    'No valid data'
+  end
 end
