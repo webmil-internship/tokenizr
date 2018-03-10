@@ -3,10 +3,8 @@ require_relative '../test_helper'
 require './classes/validator/amazon_validator'
 require 'aws-sdk-ec2'
 class AmazonTest < MiniTest::Test
-CONFIG = YAML.load_file('./conf/config.yml') unless defined? CONFIG
+  CONFIG = YAML.load_file('./conf/config.yml') unless defined? CONFIG
   def setup
-    @target = CONFIG['target']
-    @aws_region = CONFIG['aws_region']
     @input_data = [
       { access_key: CONFIG['aws_access_key_id'],
         secret_key: CONFIG['aws_secret_access_key'] },
@@ -23,7 +21,6 @@ CONFIG = YAML.load_file('./conf/config.yml') unless defined? CONFIG
   end
 
   def test_it_returns_hash_with_correct_keys
-    # skip 'Private method'
     access_key = CONFIG['aws_access_key_id']
     secret_key = CONFIG['aws_secret_access_key']
     second_access_key = CONFIG['second_aws_access_key_id']
@@ -37,7 +34,6 @@ CONFIG = YAML.load_file('./conf/config.yml') unless defined? CONFIG
   end
 
   def test_it_returns_error_with_wrong_keys
-    # skip 'Hold on, we making the base class'
     @wrong_input_data = %w[string1 string2]
     @validator = AmazonValidator.new(@wrong_input_data)
     assert_equal(
