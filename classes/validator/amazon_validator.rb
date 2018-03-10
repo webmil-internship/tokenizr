@@ -15,15 +15,14 @@ class AmazonValidator < BaseValidator
       valid_hash = { access_key_id: access_key,
                      secret_access_key: secret_key }
       hash_data = validate_keys(access_key, secret_key)
-      puts hash_data
       output_hash << valid_hash if hash_data != false
     end
-    output_hash # != [] ? output_data : 'No valid data'
+    output_hash.to_set.to_a
   rescue TypeError
-    'Array must contain hashes'
+  'Array must contain hashes'
   end
 
-private
+  private
 
   def validate_keys(access_key, secret_key)
     ec2 = Aws::EC2::Client.new(
