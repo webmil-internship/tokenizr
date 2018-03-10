@@ -1,51 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 order-md-1">
-      <form class="needs-validation" method="post">
-        <h4 class="mb-3">Search parameters</h4>
-        <div class="row">
-          <div class="col-md-8 mb-1">
-            <label for="provider">Provider</label>
-            <select class="custom-select d-block w-100" name="provider" id="provider" required autofocus>
-              <option value="">Choose...</option>
-              <% PROVIDER.drop(1).each do |provider| %>
-                 <option><%= provider %></option>
-              <% end %>
-            </select>
-          </div>
+<div class="row">
+  <div class="col-md-8 order-md-1">
+    <form class="needs-validation" method="post">
+      <h4 class="mb-3">Search parameters</h4>
+      <div class="row">
+        <div class="col-md-8 mb-1">
+          <label for="provider">Provider</label>
+          <select class="custom-select d-block w-100" name="provider" id="provider" required autofocus>
+            <option value="">Choose...</option>
+            <% PROVIDER.drop(1).each do |provider| %>
+               <option><%= provider %></option>
+            <% end %>
+          </select>
         </div>
+      </div>
 
-        <hr class="mb-1">
+      <hr class="mb-1">
 
-        <div class="row">
-          <div class="col-md-8 mb-1">
-            <label for="target">Target</label>
-            <select class="custom-select d-block w-100" name="target" id="target" required autofocus>
-              <option value="">Choose...</option>
-              <% TARGET.drop(1).each do |target| %>
-                 <option><%= target %></option>
-              <% end %>
-            </select>
-          </div>
+      <div class="row">
+        <div class="col-md-8 mb-1">
+          <label for="target">Target</label>
+          <select class="custom-select d-block w-100" name="target" id="target" required autofocus>
+            <option value="">Choose...</option>
+            <% TARGET.drop(1).each do |target| %>
+               <option><%= target %></option>
+            <% end %>
+          </select>
         </div>
+      </div>
 
-        <hr class="mb-1">
+      <hr class="mb-1">
 
-        <div class="row">
-          <div class="col-md-8 mb-1">
-            <label for="searchString">Search String</label>
-            <input type="text" class="form-control" id="searchString"  name="sstring" placeholder="" value="" required>
-          </div>
+      <div class="row">
+        <div class="col-md-8 mb-1">
+          <label for="searchString">Search String</label>
+          <input type="text" class="form-control" id="searchString"  name="sstring" placeholder="" value="" required>
         </div>
-        <hr class="mb-4">
-        <div class="col-md-8 mb-3">
-          <button class="btn btn-primary btn-block" type="submit" onclick="this.disabled=true;this.form.submit();">Start search</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <hr class="mb-4">
+      <div class="col-md-8 mb-3">
+        <button class="btn btn-primary btn-block" type="submit">Start search</button>
+      </div>
+    </form>
   </div>
-
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2018 Webmil</p>
-  </footer>
 </div>

@@ -1,32 +1,27 @@
-<div class="container">
-  <br>
-  <h4 class="mb-3">All search results</h4>
-  <table class="table table-bordered table-hover">
-   <thead class="bg-primary">
+<br>
+<h4 class="mb-3">All search results</h4>
+<table class="table table-bordered table-hover">
+  <thead class="bg-primary">
+  <tr>
+    <th style = "text-align:center">Provider</th>
+    <th style = "text-align:center">Target</th>
+    <th style = "text-align:center">Key phrase</th>
+    <th style = "text-align:center">When</th>
+    <th style = "text-align:center" colspan="3">Operation</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @passkeys %>
+    <% @passkeys.each do |row| %>
     <tr>
-      <th style = "text-align:center">Provider</th>
-      <th style = "text-align:center">Target</th>
-      <th style = "text-align:center">Key phrase</th>
-      <th style = "text-align:center">When</th>
-      <th style = "text-align:center" colspan="3">Operation</th>
+      <td><%= row.provider %></td>
+      <td><%= row.target %> </td>
+      <td><%= row.key_phrase %> </td>
+      <td><%= row.when.strftime('%d %b %Y %H:%M:%S') %> </td>
+      <td><a class="btn btn-primary btn-block" href=<%= "/phrases/#{row.id}" %>>View</a></td>
+      <td><button class="btn btn-danger btn-block disabled">Delete</button></td>
     </tr>
-   </thead>
-   <tbody>
-   <% if @passkeys %>
-     <% @passkeys.each do |row| %>
-     <tr>
-       <td><%= row.provider %></td>
-       <td><%= row.target %> </td>
-       <td><%= row.key_phrase %> </td>
-       <td><%= row.when.strftime('%d %b %Y %H:%M:%S') %> </td>
-       <td><a class="btn btn-primary btn-block" href=<%= "/phrases/#{row.id}" %>>View</a></td>
-       <td><button class="btn btn-danger btn-block">Delete</button></td>
-     </tr>
-   <% end %>
+    <% end %>
   <% end %>
   </tbody>
-  </table>
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2018 Webmil</p>
-  </footer>
-</div>
+</table>

@@ -14,6 +14,8 @@ TARGET = %w[None]
 Dir[File.dirname(__FILE__) + '/classes/**/*.rb'].each { |file| require file }
 Dir[File.dirname(__FILE__) + '/models/*.rb'].each { |file| require file }
 
+# Create aarays PROVIDER and PARSER from classes in folders
+# classes/provider and classes/parser
 providers = []
 Dir.foreach('classes/provider').map { |x| File.basename(x) }.select do |y|
   providers << y.scan(/\b(.*)\_/)
