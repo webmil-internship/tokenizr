@@ -18,7 +18,7 @@ class AmazonValidator < BaseValidator
       puts hash_data
       output_hash << valid_hash if hash_data != false
     end
-    # output_hash # != [] ? output_data : 'No valid data'
+    output_hash # != [] ? output_data : 'No valid data'
   rescue TypeError
     'Array must contain hashes'
   end
