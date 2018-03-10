@@ -1,5 +1,5 @@
 class BaseProvider
-  attr_accessor :result, :key_phrase
+  attr_accessor :key_phrase
 
   def initialize(key_phrase)
     @array = []
