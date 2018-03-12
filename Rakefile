@@ -1,5 +1,12 @@
+require 'rake/testtask'
+require 'minitest/reporters'
 require 'sequel'
 require 'yaml'
+
+Rake::TestTask.new do |t|
+  t.pattern = 'test/**/*_test.rb'
+  t.warning = false
+end
 
 Sequel.extension :migration
 

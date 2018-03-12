@@ -11,4 +11,6 @@ gem 'sequel'
 gem 'sinatra'
 gem 'sqlite3'
 gem 'telegram-bot-ruby'
+gem "minitest"
+gem 'minitest-reporters'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
