@@ -4,6 +4,9 @@ require 'sinatra'
 
 require './boot'
 
+IP = CONFIG['ip_address'].freeze
+PORT = CONFIG['ip_port'].freeze
+
 set :bind, IP
 set :port, PORT
 

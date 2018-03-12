@@ -1,10 +1,7 @@
+# Console version
 require './boot'
 
-# Console version
 class SearchKeys
-  # PROVIDER = %w[None GitHub GitLab BitBucket].freeze
-  # TARGET = %w[None Amazon DigitalOcean Microsoft].freeze
-
   STARTING_SEARCH = 'Starting search...'.freeze
   INPUT_DATA_ERROR = 'Error. Please check your input data. '.freeze
   SEARCH_COMPLETED = 'Completed. Go to results list for detail info. '.freeze
@@ -57,9 +54,7 @@ class SearchKeys
 
   def choose(service)
     puts 'Select service:'
-    service.each_with_index do |value, index|
-      puts "#{index} - #{value}"
-    end
+    service.each_with_index { |value, index| puts "#{index} - #{value}" }
     choice = gets
     service[choice.to_i]
   end

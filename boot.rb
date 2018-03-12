@@ -6,8 +6,6 @@ require 'yaml'
 
 CONFIG = YAML.load_file('config.yml')
 DB = Sequel.connect(CONFIG['db_file'])
-IP = CONFIG['ip_address'].freeze
-PORT = CONFIG['ip_port'].freeze
 PROVIDER = %w[None]
 TARGET = %w[None]
 
