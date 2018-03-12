@@ -1,3 +1,5 @@
 source 'https://rubygems.org'
-
-gem 'minitest-reporters'
+gem 'dotenv'
+gem 'octokit'
+gem 'gitlab'
+gem "minitest"
