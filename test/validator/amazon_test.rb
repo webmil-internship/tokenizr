@@ -37,7 +37,7 @@ class AmazonTest < MiniTest::Test
     @wrong_input_data = %w[string1 string2]
     @validator = AmazonValidator.new(@wrong_input_data)
     assert_equal(
-      'Array must contain hashes',
+      'Incorrect keys given',
       @validator.validate
     )
   end
@@ -45,6 +45,6 @@ class AmazonTest < MiniTest::Test
   def test_it_receives_message_with_empty_array
     empty_data = []
     empty_validator = AmazonValidator.new(empty_data)
-    assert_equal('No valid data', empty_validator.validate)
+    assert_equal('Array must contain hashes', empty_validator.validate)
   end
 end

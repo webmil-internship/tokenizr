@@ -1,5 +1,5 @@
 class BaseValidator
-  attr_accessor :input_data, :output_data
+  attr_accessor :input_data
   def initialize(input_data)
     @input_data = input_data
     @output_data = []
@@ -10,10 +10,14 @@ class BaseValidator
   end
 
   def result
-    output_data != [] ? output_data : 'No valid data'
+    output_data.nil? ? 'No valid data' : output_data
   end
 
   def output_data
+    parsed_array == [] ? 'Array must contain hashes' : parsed_array
+  end
+
+  def parsed_array
     'No valid data'
   end
 end

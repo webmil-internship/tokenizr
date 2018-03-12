@@ -22,8 +22,14 @@ class ValidatorTest < MiniTest::Test
   end
 
   def test_it_receives_message_with_empty_array
-    empty_data =[]
+    empty_data = []
     empty_validator = BaseValidator.new(empty_data)
+    assert_equal('No valid data', empty_validator.validate)
+  end
+
+  def test_it_receives_message_with_any_data
+    any_data = 'anydata'
+    empty_validator = BaseValidator.new(any_data)
     assert_equal('No valid data', empty_validator.validate)
   end
 end

@@ -10,9 +10,9 @@ class AmazonValidator < BaseValidator
 
   def output_data
     @input_data.each(&parsed_array)
-    output_hash.uniq
+    output_hash == [] ? 'Array must contain hashes' : output_hash.uniq
   rescue TypeError
-    'Array must contain hashes'
+    'Incorrect keys given'
   end
 
   private
