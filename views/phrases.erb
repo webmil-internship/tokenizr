@@ -1,0 +1,29 @@
+<br>
+<h4 class="mb-3">All valid phrases for search result:</h4>
+<%= @passkey.provider %>
+<br>
+<%= @passkey.target %>
+<br>
+<%= @passkey.key_phrase %>
+<br>
+<%= @passkey.when %>
+<table class="table table-bordered table-hover">
+  <thead class="bg-primary">
+  <tr>
+    <th style = "text-align:center" colspan="2">Valid phrases</th>
+    <th style = "text-align:center" colspan="2">Operation</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% if @passkey %>
+    <% @passkey.phrases.each do |row| %>
+      <tr>
+        <td><%= row.phrase_key %> </td>
+        <td><%= row.phrase_val %> </td>
+        <td><a class="btn btn-primary btn-block">Copy to clipboard</a></td>
+        <td><button class="btn btn-danger btn-block disabled">Delete</button></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
