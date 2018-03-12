@@ -1,9 +1,8 @@
+require 'dotenv/load'
+require 'gitlab'
 require_relative 'base_provider'
 
 class GitlabProvider < BaseProvider
-  require 'dotenv/load'
-  require 'gitlab'
-
   attr_accessor :projects
 
   def initialize(key_phrase)

@@ -1,9 +1,8 @@
+require 'dotenv/load'
+require 'octokit'
 require_relative 'base_provider'
 
 class GithubProvider < BaseProvider
-  require 'dotenv/load'
-  require 'octokit'
-
   attr_accessor :res
 
   def initialize(key_phrase)
