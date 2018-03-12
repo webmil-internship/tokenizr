@@ -8,7 +8,7 @@ class TelegramValidator < BaseValidator
 
   def output_data
     @input_data.each(&parsed_array)
-    output_hash == [] ? 'Array must contain hashes' : output_hash.uniq
+    output_hash == [] ? 'No valid data' : output_hash.uniq
   end
 
   def parsed_array
