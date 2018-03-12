@@ -14,7 +14,7 @@ class CracksMan
     parsed_phrases =
       Object.const_get("#{@target}Parser").new(search_result).result
     valid_phrases =
-      Object.const_get("#{@target}Validator").new(parsed_phrases).result
+      Object.const_get("#{@target}Validator").new(parsed_phrases).validate
     save_valid_phrases(valid_phrases)
   end
 
