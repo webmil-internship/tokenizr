@@ -6,10 +6,6 @@ class BaseValidator
   end
 
   def validate
-    result
-  end
-
-  def result
     output_data.nil? ? 'No valid data' : output_data
   end
 
