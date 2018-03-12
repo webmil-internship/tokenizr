@@ -1,3 +1,4 @@
+=======
 # Tokenizr
 ## Some short description of service
 
@@ -32,3 +33,9 @@ to validate.
 2. Inherit methods from `Validator` class
 3. Implement method `output_data` to return an array of hashes with validated
 data.
+
+### Readme for tokenizr class Provider:
+
+1. Require necessary file from classes to your class.
+2. Initialize necessary class with string key_phrase.
+3. Use method results from class.
