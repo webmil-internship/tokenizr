@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'awesome_print'
 gem 'dotenv'
+gem 'gitlab'
 gem 'json'
 gem 'octokit', '~> 4.0'
 gem 'rerun'
