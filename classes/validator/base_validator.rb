@@ -10,7 +10,7 @@ class BaseValidator
   end
 
   def output_data
-    parsed_array == [] ? 'No valid data' : parsed_array
+    parsed_array == [] ? [] : parsed_array
   end
 
   def parsed_array

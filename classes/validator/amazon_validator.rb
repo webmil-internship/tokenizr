@@ -1,4 +1,5 @@
 require_relative 'base_validator'
+require 'aws-sdk-ec2'
 
 class AmazonValidator < BaseValidator
   attr_accessor :region, :output_hash
@@ -10,7 +11,7 @@ class AmazonValidator < BaseValidator
 
   def output_data
     @input_data.each(&parsed_array)
-    output_hash == [] ? 'Array must contain hashes' : output_hash.uniq
+    output_hash == [] ? [] : output_hash.uniq
   rescue TypeError
     'Incorrect keys given'
   end
@@ -34,7 +35,7 @@ class AmazonValidator < BaseValidator
     )
     ec2.describe_regions
     true
-  rescue Aws::EC2::Errors::AuthFailure
+  rescue
     false
   end
 end

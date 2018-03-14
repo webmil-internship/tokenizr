@@ -1,12 +1,6 @@
-# Ignore all draftfiles and tempfiles.
 /draft/*
 /tmp/*
-
-# Ignore config file with bot token
-/config.yml
-
-# Ignore DB
+/*/config.yml
 /db/*.db
-
 .env
 /.idea/*
