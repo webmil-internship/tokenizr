@@ -1,3 +1,7 @@
+/draft/*
+/tmp/*
+/*/config.yml
+/db/*.db
 .env
 /.idea/*
-config.yml
+/config.yml
