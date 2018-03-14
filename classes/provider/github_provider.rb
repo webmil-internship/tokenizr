@@ -9,17 +9,21 @@ class GithubProvider < BaseProvider
     @token = ENV['GITHUB_TOKEN']
     @key_phrase = key_phrase
     @res = res
+    @array = []
   end
 
   private
 
   def search_word
-    client = Octokit::Client.new access_token: @token
-    @res = client.search_code(@key_phrase, page: 100, per_page: 1,
-                              headers: {"Accept" => "application/vnd.github.v3.text-match+json"})
+    (1..10).each do |i|
+      client = Octokit::Client.new access_token: @token
+      @res = client.search_code(@key_phrase, page: i, per_page: 100,
+                                headers: {"Accept" => "application/vnd.github.v3.text-match+json"})
+      @array << @res.items.map { |item| item.text_matches.map(&:fragment) }.flatten
+    end
   end
 
   def save_array
-    @array = @res.items.map { |item| item.text_matches.map(&:fragment) }.flatten
+    @array.flatten
   end
 end
