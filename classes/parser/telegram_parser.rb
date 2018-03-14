@@ -1,7 +1,7 @@
 require_relative 'base_parser'
 
 class TelegramParser < BaseParser
-  TOKEN = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/
+  TOKEN = /\d{5,10}:[A-Za-z0-9]{30,40}/
 
   def parse_string(string)
     value = {
