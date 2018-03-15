@@ -1,4 +1,5 @@
 require_relative 'base_validator'
+require 'telegram/bot'
 class TelegramValidator < BaseValidator
   attr_accessor :output_hash
   def initialize(input_data)

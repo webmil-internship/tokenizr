@@ -10,15 +10,15 @@ class CracksMan
 
   def handling
     search_result =
-      Object.const_get("#{@provider}Provider").new(@key_phrase).results
+      Object.const_get("Providers::#{@provider}Provider").new(@key_phrase).results
     puts "==================================== search_result =========================================="
     puts search_result
     parsed_phrases =
-      Object.const_get("#{@target}Parser").new.result(search_result)
+      Object.const_get("Parsers::#{@target}Parser").new.result(search_result)
     puts "==================================== parsed_phrases ==========================================="
     puts parsed_phrases
     valid_phrases =
-      Object.const_get("#{@target}Validator").new(parsed_phrases).validate
+      Object.const_get("Validators::#{@target}Validator").new(parsed_phrases).validate
     puts "==================================== valid_phrases ==========================================="
     puts valid_phrases
     save_valid_phrases(valid_phrases)
