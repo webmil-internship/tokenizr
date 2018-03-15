@@ -89,7 +89,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -109,7 +108,6 @@ DEPENDENCIES
   sinatra
   sqlite3
   telegram-bot-ruby
-  wdm (>= 0.1.0)
 
 BUNDLED WITH
    1.16.1

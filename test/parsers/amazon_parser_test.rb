@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '../../classes/parser/amazon_parser'
+require_relative '../../lib/parsers/amazon_parser'
 
 class AmazonParserTest < Minitest::Test
   EXAMPLE_ARRAY =
@@ -23,12 +23,12 @@ class AmazonParserTest < Minitest::Test
                                             'dVNu8N8Ge2XNxfB5r' }].freeze
 
   def test_array
-    parser = AmazonParser.new
+    parser = Parsers::AmazonParser.new
     assert_equal RESULT_FROM_ARRAY, parser.result(EXAMPLE_ARRAY)
   end
 
   def test_string
-    parser = AmazonParser.new.result(EXAMPLE_STRING)
+    parser = Parsers::AmazonParser.new.result(EXAMPLE_STRING)
     assert_equal RESULT_FROM_STRING, parser
   end
 end
