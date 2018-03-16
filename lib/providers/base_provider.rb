@@ -13,13 +13,9 @@ module Providers
       save_array
     end
 
-    def search_word
+    def search_word; end
 
-    end
-
-    def save_array
-
-    end
+    def save_array; end
   end
 end
 
