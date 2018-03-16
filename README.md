@@ -1,45 +1,41 @@
 =======
-# Tokenizr
-## Some short description of service
+# Tokenizr Howto
 
-# Parser
-# How to using parser:
+1. `git clone https://github.com/webmil-internship/tokenizr.git`
+2. `bundle install` and `rake db:migrate`
+3. `ruby app_con.rb` (console version) OR rerun `app_web.rb` (web version)
+4. For web version edit `config.yml` and set valid ip_address and ip_port (e.g. ip_address: '192.168.1.63', ip_port: '4567')
 
-- require necessary file from classes/parser/ to your class
-- initialize necessary class with string or array
-- use method result from class
+## How to use Parser
 
-# How to create your parser
+1. require necessary file from _lib/parsers/_ to your class
+2. initialize necessary class with string or array
+3. use method result from class
 
-- Create file
-- Add inheritance with class Parser
-- Implement methods parse_string(string)
-    - Inside parse_string(string) initialize hash
-    - Push to hash data from method key(string, format), where string - where we search data, and format - what  we search (reqex format)
-    - Finally use method array_shaping(hash) to create array of hashes with search data
-    - EXAMPLE: see amazon_parser.rb in classes/parser folder
+## How to create your own Parser
 
-### Usage of the module Validator.
+1. Create file in _lib/parsers/_ folder
+2. Add inheritance with class Parser
+3. Implement methods `parse_string(string)`
+    - Inside `parse_string(string)` initialize hash
+    - Push to hash data from method key(string, format), where `string` - it is where we search data, and `format` - it is what we search (reqex format)
+    - Finally use method `array_shaping(hash)` to create array of hashes with search data
+    - EXAMPLE: see `amazon_parser.rb` in _lib/parser folder_
 
-1. Require nessesary file from _classes/validator_ folder
-2. Initialize required `Validator` Class with an array of data which are need
+## How to use Validator
+
+1. Require nessesary file from _lib/validators_ folder.
+2. Initialize required `Validator`_lib/parsers/_  Class with an array of data which are need
 to validate.
-3. Use method `validate` from initialized class
+3. Use method `validate` from initialized class.
 
-### Making Your own child class
+## How to make your own Validator
 
-1. Create file in _Validator_ folder.
+1. Create file in _Validators_ folder.
 ..- Use the naming template _TargetValidator.rb_.
 2. Inherit methods from `Validator` class
 3. Implement method `output_data` to return an array of hashes with validated
 data.
 
-### Readme for tokenizr class Provider:
+## How to use Provider
 
-1. git clone https://github.com/webmil-internship/tokenizr.git
-2. git checkout alpha
-3. bundle install
-4. unzip config.yml.zip
-5. unzip db/sbs.db.zip (existing DB) OR rake db:migrate (empty DB)
-6. ruby app_con.rb (console version) OR rerun app_web.rb (web version)
-7. For web version edit config.yml and set valid ip_address and ip_port (e.g. ip_address: '192.168.1.63', ip_port: '4567')
