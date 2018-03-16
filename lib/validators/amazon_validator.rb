@@ -25,12 +25,12 @@ module Validators
         secret_key = hash[:secret_key]
         valid_hash = { access_key_id: access_key,
                        secret_access_key: secret_key }
-        hash_data = validate_keys(access_key, secret_key)
+        hash_data = validate_input(access_key, secret_key)
         output_hash << valid_hash if hash_data != false
       end
     end
 
-    def validate_keys(access_key, secret_key)
+    def validate_input(access_key, secret_key)
       ec2 = Aws::EC2::Client.new(
         region: region, access_key_id: access_key, secret_access_key: secret_key
       )

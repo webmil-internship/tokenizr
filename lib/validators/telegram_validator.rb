@@ -14,16 +14,18 @@ module Validators
       output_hash == [] ? [] : output_hash.uniq
     end
 
+    private
+
     def parsed_array
       proc do |hash|
         token = hash[:token]
         valid_hash = { token: token }
-        hash_data = validate_token(token)
+        hash_data = validate_input(token)
         output_hash << valid_hash if hash_data != false
       end
     end
 
-    def validate_token(token)
+    def validate_input(token)
       tgconnect = Telegram::Bot::Client.run(token,
                                             logger: Logger.new($stderr)) do |bot|
         bot.api.getMe

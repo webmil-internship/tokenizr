@@ -13,5 +13,7 @@ module Validators
     def output_data; end
 
     def parsed_array; end
+
+    def validate_input; end
   end
 end
