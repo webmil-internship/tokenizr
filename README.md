@@ -39,3 +39,14 @@ data.
 
 ## How to use Provider
 
+1. Require necessary file from _lib/providers/_ to your class.
+2. Initialize necessary class with string of key_phrase.
+3. Use method `results` from class.
+
+## How to create your own Provider
+
+1. Create file in _lib/providers/_ folder.
+2. Add inheritance with class Provider.
+3. Implement method `search_word` to get a fragment which include key_phrase. Then implement 
+method `save_array`to return an array of all fragments.
+
